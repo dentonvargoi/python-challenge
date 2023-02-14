@@ -27,8 +27,9 @@ with open(csvFilePath) as csvFile:
 # calculate total months
       totalMonths.append(row[0])
       totalProfits.append(row[1])
-    print(len(totalMonths)) # formatting issue with adding a string for "Total Months: " text
-
+    #print(len(totalMonths)) # formatting issue with adding a string for "Total Months: " text
+    print(f"Total Months: {len(totalMonths)}")
+          
 # calculate total profits
 # the link below helped me better understand functions & list comprehensions
 # https://realpython.com/python-return-statement/#:~:text=The%20Python%20return%20statement%20is,further%20computation%20in%20your%20programs.
@@ -57,8 +58,16 @@ minProfitIndex = monthlyChanges.index(minProfit)
 print("Greatest Increase in Profits: ", totalMonths[maxProfitIndex + 1], maxProfit)
 print("Greatest Decrease in Profit: ", totalMonths[minProfitIndex + 1], minProfit)
 
+output = (f"Financial Analysis\n~~~~~~~~~~~~~~~~~~~~~~~\n"
+        f"Total Months: {len(totalMonths)}\n"
+          f"Total Profits: {totalProfitSum}\n"
+          f"Average Change: {avg}\n"
+          f"Greatest Increase in Profits: {maxProfit}\n"
+          f"Greatest Decrease in Profits: {minProfit}\n"
+
+)
 with open ("PyBank.txt", "w") as f:
-   f.writelines(totalMonths)
+   f.write(output)
    f.close()
 
 
